@@ -1,7 +1,17 @@
+import Body from "./components/Body/Body";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import SessionList from "./components/Session/SessionList";
+import ProgramList from "./components/Program/ProgramList";
+
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      {/* <Header />
+      <Body />
+      <Footer /> */}
+      {/* <ProgramList /> */}
+      <SessionList />
     </>
   );
 }
