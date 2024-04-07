@@ -1,0 +1,9 @@
+footer {
+    padding: 40px 0;
+    font-size: 14px;
+    letter-spacing: 0.8px;
+}
+
+footer, p {
+    font-size: 14px;
+}
