@@ -3,9 +3,9 @@ import "./Footer.css";
 const Footer = () => {
   return (
     <>
-      <footer className="bg-blue-900 text-white flex justify-center gap-6">
+      <footer className="bg-blue-900 text-white md:text-sm lg:text-xl flex justify-center gap-6 md:gap-20 lg:gap-36">
         <div>
-          <ul className="flex flex-col gap-2">
+          <ul className="flex flex-col gap-2 ">
             <li>
               <a href="https://upsasip.com/">Students Portal</a>
             </li>
@@ -43,7 +43,7 @@ const Footer = () => {
           </ul>
         </div>
       </footer>
-      <div className="text-white bg-blue-900 pb-2">
+      <div className="text-white lg:text-lg bg-blue-900 pb-2">
         <p className="text-center">@2024 UPSA-Ghana</p>
       </div>
     </>

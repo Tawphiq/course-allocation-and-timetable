@@ -12,7 +12,7 @@ const ProgramList = () => {
         <Header />
         <div>
           <Link to="/">
-            <button className="flex gap-1 items-center border bg-slate-200 px-3 py-1 m-2 hover:bg-slate-100 rounded-sm">
+            <button className="flex gap-1 items-center border bg-slate-200 px-3 py-1 m-2 lg:m-5 lg:text-lg hover:bg-slate-100 rounded-sm">
               <MdKeyboardBackspace />
               Back
             </button>

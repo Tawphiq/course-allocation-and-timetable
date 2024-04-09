@@ -1,4 +1,10 @@
 .program-list {
-    height: 70vh;
+    height: 80vh;
     padding: 20px;
 }
+
+@media all and (min-width: 1024px) {
+    .program-header {
+    margin-left: 242px;
+}
+ }
