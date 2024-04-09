@@ -1,17 +1,16 @@
-import Body from "./components/Body/Body";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import SessionList from "./components/Session/SessionList";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home/Home";
 import ProgramList from "./components/Program/ProgramList";
+import SessionList from "./components/Session/SessionList";
 
 function App() {
   return (
     <>
-      {/* <Header />
-      <Body />
-      <Footer /> */}
-      {/* <ProgramList /> */}
-      <SessionList />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/program-list" element={<ProgramList />} />
+        <Route path="/session-list" element={<SessionList />} />
+      </Routes>
     </>
   );
 }
