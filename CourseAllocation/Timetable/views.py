@@ -13,19 +13,19 @@ class LevelListCreateView(generics.ListCreateAPIView):
     serializer_class = LevelSerializer
 
 class CourseListCreateView(generics.ListCreateAPIView):
-    queryset = Course.objects.filter(department__name='IT')
+    queryset = Course.objects.all()  # Removed department filtering
     serializer_class = CourseSerializer
 
 class CourseRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Course.objects.filter(department__name='IT')
+    queryset = Course.objects.all()  # Removed department filtering
     serializer_class = CourseSerializer
 
 class LecturerListCreateView(generics.ListCreateAPIView):
-    queryset = Lecturer.objects.filter(department__name='IT')
+    queryset = Lecturer.objects.all()  # Removed department filtering
     serializer_class = LecturerSerializer
 
 class LecturerRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Lecturer.objects.filter(department__name='IT')
+    queryset = Lecturer.objects.all()  # Removed department filtering
     serializer_class = LecturerSerializer
 
 class ClassGroupListCreateView(generics.ListCreateAPIView):
@@ -37,18 +37,17 @@ class ClassGroupRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView)
     serializer_class = ClassGroupSerializer
 
 class LectureHallListCreateView(generics.ListCreateAPIView):
-    queryset = LectureHall.objects.filter(department__name='IT')
+    queryset = LectureHall.objects.all()  # Removed department filtering
     serializer_class = LectureHallSerializer
 
 class LectureHallRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = LectureHall.objects.filter(department__name='IT')
+    queryset = LectureHall.objects.all()  # Removed department filtering
     serializer_class = LectureHallSerializer
 
 class TimetableListCreateView(generics.ListCreateAPIView):
-    queryset = Timetable.objects.filter(department__name='IT')
+    queryset = Timetable.objects.all()  # Removed department filtering
     serializer_class = TimetableSerializer
 
 class TimetableRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Timetable.objects.filter(department__name='IT')
+    queryset = Timetable.objects.all()  # Removed department filtering
     serializer_class = TimetableSerializer
-

@@ -15,8 +15,8 @@ urlpatterns = [
     path('courses/<int:pk>/', views.CourseRetrieveUpdateDestroyView.as_view(), name='course-retrieve-update-destroy'),
 
     # Lecturer URLs
-    path('Lecturers/', views.LecturerListCreateView.as_view(), name='Lecturer-list-create'),
-    path('Lecturers/<int:pk>/', views.LecturerRetrieveUpdateDestroyView.as_view(), name='Lecturer-retrieve-update-destroy'),
+    path('lecturers/', views.LecturerListCreateView.as_view(), name='lecturer-list-create'),
+    path('lecturers/<int:pk>/', views.LecturerRetrieveUpdateDestroyView.as_view(), name='lecturer-retrieve-update-destroy'),
 
     # Class Group URLs
     path('classgroups/', views.ClassGroupListCreateView.as_view(), name='classgroup-list-create'),
