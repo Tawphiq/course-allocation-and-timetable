@@ -1,6 +1,7 @@
 # course_allocation/models.py
 
 from django.db import models
+from django.db.models import Case, When, Value, IntegerField
 
 class Department(models.Model):
     name = models.CharField(max_length=100)
@@ -73,5 +74,22 @@ class Timetable(models.Model):
     lecturer = models.ForeignKey(Lecturer, on_delete=models.CASCADE)
     session_type = models.CharField(max_length=10, choices=SESSION_TYPES, default="Regular")
 
+    class Meta:
+        ordering = [
+            Case(
+                When(day='Monday', then=Value(1)),
+                When(day='Tuesday', then=Value(2)),
+                When(day='Wednesday', then=Value(3)),
+                When(day='Thursday', then=Value(4)),
+                When(day='Friday', then=Value(5)),
+                When(day='Saturday', then=Value(6)),
+                When(day='Sunday', then=Value(7)),
+                default=Value(8),  # Default value for days not listed (shouldn't happen ideally)
+                output_field=IntegerField()
+            ),
+            'session_type'
+        ]
+
     def __str__(self):
-        return f"{self.level} - {self.class_group} - {self.day}"
+        return f"{self.level} - {self.class_group}"
+
