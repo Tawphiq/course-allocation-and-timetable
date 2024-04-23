@@ -24,7 +24,9 @@ class Level(models.Model):
 class Course(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='courses')
     name = models.CharField(max_length=100)
-    course_level = models.PositiveSmallIntegerField()
+    course_level = models.ForeignKey(Level, null=True, default=None, on_delete=models.CASCADE)
+    credit_hours = models.PositiveIntegerField(default=3)
+
 
     def __str__(self):
         return self.name
@@ -61,6 +63,7 @@ class Timetable(models.Model):
         ('Weekend', 'Weekend'),
     )
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='timetables')
+    course = models.ForeignKey(Course, null=True, default=None, on_delete=models.CASCADE)
     level = models.ForeignKey(Level, on_delete=models.CASCADE)
     class_group = models.ForeignKey(ClassGroup, on_delete=models.CASCADE)
     lecture_hall = models.ForeignKey(LectureHall, on_delete=models.CASCADE)
@@ -70,12 +73,5 @@ class Timetable(models.Model):
     lecturer = models.ForeignKey(Lecturer, on_delete=models.CASCADE)
     session_type = models.CharField(max_length=10, choices=SESSION_TYPES, default="Regular")
 
-   
-
     def __str__(self):
         return f"{self.level} - {self.class_group} - {self.day}"
-    
-
-    @property
-    def group_name(self):
-        return self.class_group.group_name

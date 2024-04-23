@@ -57,32 +57,27 @@ export default TimetableList;*/}
 
 import { useState, useEffect } from 'react';
 
-
 function TimetableList() {
   const [timetables, setTimetables] = useState([]);
 
   useEffect(() => {
-    // Construct URL with filters
-    const url = new URL('http://127.0.0.1:8000/api/timetables/', window.location.origin);
-    //const params = new URLSearchParams();
-    //if (departmentId) {
-    //  params.append('department', departmentId);
-    //}
-    //if (levelId) {
-     // params.append('level', levelId);
-  //  }
-   // url.search = params.toString();
-   
+    // Fetch timetables data from the backend
+    fetchTimetables();
+  }, []);
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setTimetables(data);
-        console.log('Timetables:', data); // Log the entire timetable object array
-      });
-  },[]) //[departmentId, levelId]);
-
-
+  const fetchTimetables = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/timetables/');
+      if (!response.ok) {
+        throw new Error('Failed to fetch timetables');
+      }
+      const data = await response.json();
+      setTimetables(data);
+      console.log('Timetables:', data); // Log the entire timetable object array
+    } catch (error) {
+      console.error('Error fetching timetables:', error);
+    }
+  };
 
   const sessionTypes = [...new Set(timetables.map((timetable) => timetable.session_type))];
 
@@ -103,17 +98,17 @@ function TimetableList() {
               </tr>
             </thead>
             <tbody>
-              {timetables.filter((timetable) => timetable.session_type === sessionType).map(
-                (timetable) => (
+              {timetables
+                .filter((timetable) => timetable.session_type === sessionType)
+                .map((timetable) => (
                   <tr key={timetable.id} className="border-b border-gray-200 hover:bg-gray-100">
                     <td className="px-4 py-2">{timetable.day}</td>
                     <td className="px-4 py-2">{timetable.time_start} - {timetable.time_end}</td>
-                    <td className="px-4 py-2">{console.log('Class Group:', timetable.class_group)}{timetable.class_group.name}</td>
-                    <td className="px-4 py-2">{timetable.lecture_hall.name}</td>
-                    <td className="px-4 py-2">{timetable.lecturer.name}</td>
+                    <td className="px-4 py-2">{timetable.class_group?.group_name}</td>
+                    <td className="px-4 py-2">{timetable.lecture_hall?.name}</td>
+                    <td className="px-4 py-2">{timetable.lecturer?.name}</td>
                   </tr>
-                )
-              )}
+                ))}
             </tbody>
           </table>
         </div>
