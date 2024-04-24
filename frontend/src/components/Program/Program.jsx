@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Program = () => {
   return (
     <>
-      <div className="programs flex flex-col gap-10 lg:text-xl ">
+      <div className="programs flex flex-col gap-10 lg:text-xl">
         <div className="program">
           <div className="program-header bg-blue-200 w-2/6 border-8 border-red-400 rounded-tl-md rounded-tr-md">
             <h1 className="text-center">DIPLOMA</h1>

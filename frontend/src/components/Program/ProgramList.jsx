@@ -18,7 +18,7 @@ const ProgramList = () => {
             </button>
           </Link>
         </div>
-        <div className="program-list">
+        <div className="program-list mb-52">
           <Program />
         </div>
 
