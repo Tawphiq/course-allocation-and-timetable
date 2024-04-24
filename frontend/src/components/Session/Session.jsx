@@ -41,15 +41,22 @@ const Session = () => {
       });
   }, []);
 
+
+  // Function to stringify Time objects
+  const stringifyTime = (time) => {
+    return new Date(`1970-01-01T${time}`).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric' });
+  };
+
+
   return (
     <>
-      <div className="session lg:w-10/12 lg:mx-auto divide-y divide-blue-200">
+      <div className="session lg:w-10/12 lg:mx-auto divide-y divide-blue-200 mb-10 mt-10">
         {/* Regular Session */}
         <div className="bg-blue-200 w-60 p-1">
           <h1 className="uppercase font-bold lg:text-2xl md:text-xl">Regular</h1>
         </div>
         {regularTimetables.map((timetable, index) => (
-          <Timetable key={index} timetable={timetable} />
+          <Timetable key={index} timetable={timetable} stringifyTime={stringifyTime} />
         ))}
 
         {/* Evening Session */}
@@ -57,7 +64,7 @@ const Session = () => {
           <h1 className="uppercase font-bold lg:text-2xl md:text-xl">Evening</h1>
         </div>
         {eveningTimetables.map((timetable, index) => (
-          <Timetable key={index} timetable={timetable} />
+          <Timetable key={index} timetable={timetable} stringifyTime={stringifyTime} />
         ))}
 
         {/* Weekend Session */}
@@ -65,14 +72,14 @@ const Session = () => {
           <h1 className="uppercase font-bold lg:text-2xl md:text-xl">Weekend</h1>
         </div>
         {weekendTimetables.map((timetable, index) => (
-          <Timetable key={index} timetable={timetable} />
+          <Timetable key={index} timetable={timetable} stringifyTime={stringifyTime} />
         ))}
       </div>
     </>
   );
 };
 
-const Timetable = ({ timetable }) => {
+const Timetable = ({ timetable, stringifyTime }) => {
   return (
     <div className="bg-slate-50 flex items-center lg:gap-16 md:gap-5">
       <div className="w-1/5 rounded-md">
@@ -91,7 +98,7 @@ const Timetable = ({ timetable }) => {
       </div>
       <div className="w-1/5 py-9 px-2 bg-slate-50">
         <p className="uppercase lg:text-xl">
-          {timetable.time_start} <br /> {timetable.time_end}
+        {stringifyTime(timetable.time_start)} - {stringifyTime(timetable.time_end)}
         </p>
       </div>
     </div>
