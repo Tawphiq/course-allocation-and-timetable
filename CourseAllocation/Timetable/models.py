@@ -88,9 +88,12 @@ class Timetable(models.Model):
                 default=Value(8),  # Default value for days not listed (shouldn't happen ideally)
                 output_field=IntegerField()
             ),
-            'session_type'
+            'session_type',
+            'time_start',  # Add secondary sorting by time_start
+            'time_end'   # Add tertiary sorting by time_end
+
         ]
 
     def __str__(self):
-        return f"{self.level} - {self.class_group}"
+        return f"{self.session_type} - {self.level} - {self.class_group} - {self.day}"
 
