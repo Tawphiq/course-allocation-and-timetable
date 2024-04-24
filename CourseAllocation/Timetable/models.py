@@ -25,6 +25,7 @@ class Level(models.Model):
 class Course(models.Model):
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='courses')
     name = models.CharField(max_length=100)
+    course_code = models.CharField(max_length=10, null=True, default=None)
     course_level = models.ForeignKey(Level, null=True, default=None, on_delete=models.CASCADE)
     credit_hours = models.PositiveIntegerField(default=3)
 
